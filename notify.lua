@@ -46,9 +46,9 @@ NotificationParent.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 NotificationParent.BackgroundTransparency = 1.000
 NotificationParent.BorderSizePixel = 0
 NotificationParent.ClipsDescendants = false
-NotificationParent.Position = UDim2.new(1, 0, 0, 25)
+NotificationParent.Position = UDim2.new(1, 0, 0, 0)
 NotificationParent.Selectable = false
-NotificationParent.Size = UDim2.new(0, 275, 1, 0)
+NotificationParent.Size = UDim2.new(0, 275, 0.5, 0)
 NotificationParent.CanvasSize = UDim2.new(0, 0, 0, 0)
 NotificationParent.ScrollBarThickness = 0
 NotificationParent.ScrollingEnabled = false
@@ -60,7 +60,7 @@ UIListLayout.VerticalAlignment = Enum.VerticalAlignment.Top
 UIListLayout.Padding = UDim.new(0, 5)
 
 UIPadding.Parent = NotificationParent
-UIPadding.PaddingRight = UDim.new(0, 25)
+UIPadding.PaddingRight = UDim.new(0, 10)
 UIPadding.PaddingTop = UDim.new(0, 10)
 
 Notification.Name = "Notification"
