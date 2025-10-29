@@ -247,9 +247,11 @@ function Library:CreateWindow(title)
         end
         
         function Section:AddSlider(name, min, max, default, callback)
+            local SliderObject = {}
+            
             local Slider = Instance.new("Frame")
             Slider.Name = name
-            Slider.Size = UDim2.new(1, 0, 0, 40)
+            Slider.Size = UDim2.new(1, 0, 0, 42)
             Slider.BackgroundColor3 = Color3.fromRGB(25, 25, 32)
             Slider.BorderSizePixel = 0
             Slider.Parent = SectionContent
@@ -281,8 +283,8 @@ function Library:CreateWindow(title)
             SliderValue.Parent = Slider
             
             local SliderBar = Instance.new("Frame")
-            SliderBar.Size = UDim2.new(1, -20, 0, 4)
-            SliderBar.Position = UDim2.new(0, 10, 1, -12)
+            SliderBar.Size = UDim2.new(1, -20, 0, 6)
+            SliderBar.Position = UDim2.new(0, 10, 1, -14)
             SliderBar.BackgroundColor3 = Color3.fromRGB(40, 40, 48)
             SliderBar.BorderSizePixel = 0
             SliderBar.Parent = Slider
@@ -311,6 +313,14 @@ function Library:CreateWindow(title)
                 callback(value)
             end
             
+            function SliderObject:SetValue(value)
+                value = math.clamp(value, min, max)
+                local pos = (value - min) / (max - min)
+                SliderValue.Text = tostring(value)
+                SliderFill.Size = UDim2.new(pos, 0, 1, 0)
+                callback(value)
+            end
+            
             SliderBar.InputBegan:Connect(function(input)
                 if input.UserInputType == Enum.UserInputType.MouseButton1 then
                     dragging = true
@@ -329,6 +339,8 @@ function Library:CreateWindow(title)
                     dragging = false
                 end
             end)
+            
+            return SliderObject
         end
         
         function Section:AddColorPicker(name, default, callback)
